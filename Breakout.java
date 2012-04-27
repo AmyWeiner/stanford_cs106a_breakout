@@ -70,7 +70,6 @@ public class Breakout extends GraphicsProgram {
 				add(brick);
 				brick.setFilled(true);
 				brick.setFillColor(Color.RED);
-				}
 			}
 		}
 	}
