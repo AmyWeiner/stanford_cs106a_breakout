@@ -62,6 +62,10 @@ public class Breakout extends GraphicsProgram {
 	}
 
 	private void setupGame() {
+		setupBricks();
+	}
+	
+	private void setupBricks() {
 		for (int i = 0; i < NBRICK_ROWS; i ++) {
 			for (int j = 0; j < NBRICKS_PER_ROW; j ++) {
 				double x = ((WIDTH - ((NBRICKS_PER_ROW * (BRICK_WIDTH + BRICK_SEP)) - BRICK_SEP)) / 2) + j * (BRICK_WIDTH + BRICK_SEP);
