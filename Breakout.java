@@ -59,7 +59,7 @@ public class Breakout extends GraphicsProgram {
 	private GRect paddle;
 	
 /* Runs the Breakout program. */
-	public void run() {
+	public void init() {
 		setupGame();
 		addMouseListeners();
 	}
