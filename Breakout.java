@@ -74,7 +74,11 @@ public class Breakout extends GraphicsProgram {
 				GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 				add(brick);
 				brick.setFilled(true);
+				if (NBRICK_ROWS == 0 || NBRICK_ROWS % 10 == 1) {
 				brick.setColor(Color.RED);
+				} else if (NBRICK_ROWS % 10 == 2 || NBRICK_ROWS % 10 == 3) {
+					brick.setColor(Color.ORANGE);
+				}
 			}
 		}
 	}
