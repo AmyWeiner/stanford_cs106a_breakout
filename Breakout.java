@@ -96,5 +96,6 @@ public class Breakout extends GraphicsProgram {
 		int y = HEIGHT - 30;
 		GRect paddle = new GRect (x, y, PADDLE_WIDTH, PADDLE_HEIGHT);
 		add(paddle);
+		paddle.setFilled(true);
 	}
 }
