@@ -63,6 +63,7 @@ public class Breakout extends GraphicsProgram {
 
 	private void setupGame() {
 		setupBricks();
+		createPaddle();
 	}
 	
 	private void setupBricks() {
@@ -76,5 +77,11 @@ public class Breakout extends GraphicsProgram {
 				brick.setColor(Color.RED);
 			}
 		}
+	}
+	
+	private void createPaddle() {
+		int x = WIDTH / 2;
+		int y = HEIGHT - 30;
+		//GRect paddle = new GRect
 	}
 }
