@@ -56,6 +56,8 @@ public class Breakout extends GraphicsProgram {
 /* Number of turns */
 	private static final int NTURNS = 3;
 
+	private GRect paddle;
+	
 /* Runs the Breakout program. */
 	public void run() {
 		setupGame();
@@ -90,8 +92,9 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void createPaddle() {
-		int x = WIDTH / 2;
+		int x = (WIDTH - PADDLE_WIDTH)/ 2;
 		int y = HEIGHT - 30;
-		//GRect paddle = new GRect
+		GRect paddle = new GRect (x, y, PADDLE_WIDTH, PADDLE_HEIGHT);
+		add(paddle);
 	}
 }
