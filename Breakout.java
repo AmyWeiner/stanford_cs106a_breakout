@@ -61,6 +61,7 @@ public class Breakout extends GraphicsProgram {
 /* Runs the Breakout program. */
 	public void run() {
 		setupGame();
+		addMouseListeners();
 	}
 
 	private void setupGame() {
@@ -97,5 +98,11 @@ public class Breakout extends GraphicsProgram {
 		GRect paddle = new GRect (x, y, PADDLE_WIDTH, PADDLE_HEIGHT);
 		add(paddle);
 		paddle.setFilled(true);
+	}
+	
+	public void mousePressed(MouseEvent e) {
+		GPoint last = new GPoint(e.getPoint());
+		GObject gobj = getElementAt(last);
+		
 	}
 }
