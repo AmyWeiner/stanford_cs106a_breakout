@@ -140,14 +140,14 @@ public class Breakout extends GraphicsProgram {
 		while (true) {
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
-			/*
-			GObject collider = getCollidingObject(ball);
+			
+			GObject collider = getCollidingObject();
 			if (collider == paddle) {
 				vy = -vy;
 			} else {
 				remove(collider);
 			}
-			*/
+			 
 			if (ball.getY() + (2 *BALL_RADIUS) > HEIGHT) {
 				vy = -vy;
 				pause(PAUSE_TIME);
@@ -164,33 +164,16 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 
-	private GObject getCollidingObject(GObject ball) {
-		GObject collider = getElementAt(ball.getX(), ball.getY());
-		if (collider == null){
-			checkSecondCorner(ball);
-			if (collider == null) {
-				checkThirdCorner(ball);
-				if (collider == null) {
-					checkFourthCorner(ball);
-				}
-			}
+	private GObject getCollidingObject() {
+		if (getElementAt(ball.getX(), ball.getY()) != null) {
+			return getElementAt(ball.getX(), ball.getY());
+		} else if (getElementAt(ball.getX() + (2 * BALL_RADIUS), ball.getY()) != null) {
+			return getElementAt(ball.getX() + (2 * BALL_RADIUS), ball.getY());
+		} else if (getElementAt(ball.getX(), ball.getY() + (2 * BALL_RADIUS)) != null) {
+			return getElementAt(ball.getX(), ball.getY() + (2 * BALL_RADIUS));
+		}else {
+			return getElementAt(ball.getX() + (2 * BALL_RADIUS), ball.getY() + (2 * BALL_RADIUS));
 		}
-		return collider;
-	}
-
-	private GObject checkSecondCorner(GObject obj) {
-		GObject collider = getElementAt(obj.getX() + (2 * BALL_RADIUS), ball.getY());
-		return collider; 
-	}
-
-	private GObject checkThirdCorner(GObject obj) {
-		GObject collider = getElementAt(ball.getX(), ball.getY() + (2 * BALL_RADIUS));
-		return collider; 
-	}
-
-	private GObject checkFourthCorner(GObject obj) {
-		GObject collider = getElementAt(ball.getX() + (2 * BALL_RADIUS), ball.getY() + (2 * BALL_RADIUS));
-		return collider; 
 	}
 
 	/* Create an instance variable for the paddle */	
