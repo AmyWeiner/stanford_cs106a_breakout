@@ -144,7 +144,7 @@ public class Breakout extends GraphicsProgram {
 				bounceUp();
 			} else if (ball.getX() + BALL_RADIUS > WIDTH) {
 				bounceLeft();
-			} else if (ball.getX() + BALL_RADIUS == 0) {
+			} else if (ball.getX() + BALL_RADIUS < 0) {
 				bounceRight();
 			} else {
 				bounceDown();
