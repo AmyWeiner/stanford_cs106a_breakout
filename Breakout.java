@@ -131,7 +131,10 @@ public class Breakout extends GraphicsProgram {
 		vx = rgen.nextDouble(MIN_X_VELOCITY, MAX_X_VELOCITY);
         if (rgen.nextBoolean()) vx = -vx;
         vy = 3.0;
-        
+        while (true) {
+        	ball.move(vx, vy);
+        	
+        }
 	}
 	
 /* Create an instance variable for the paddle */	
