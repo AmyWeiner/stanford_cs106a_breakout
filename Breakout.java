@@ -155,8 +155,9 @@ public class Breakout extends GraphicsProgram {
 				pause(PAUSE_TIME);
 			} else if (collider == paddle) {
 				vy = -vy;
-			} else {
+			} else if (collider != null) {
 				remove(collider);
+				vy = -vy;
 			}
 		}
 	}
