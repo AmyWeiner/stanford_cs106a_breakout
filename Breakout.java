@@ -62,6 +62,8 @@ public class Breakout extends GraphicsProgram {
 /* Maximum x velocity of the ball */
 	private static final double MAX_X_VELOCITY = 3.0;
 	
+	private static final double PAUSE_TIME = 20;
+	
 /* Runs the Breakout program. */
 	public void run() {
 		addMouseListeners();
@@ -137,6 +139,7 @@ public class Breakout extends GraphicsProgram {
         vy = 3.0;
         while (true) {
         ball.move(vx, vy);
+        pause(PAUSE_TIME);
         }
 	}
 	
@@ -150,4 +153,6 @@ public class Breakout extends GraphicsProgram {
 	
 /* Create an instance variable for the random number generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
+	
+	
 }
