@@ -121,11 +121,17 @@ public class Breakout extends GraphicsProgram {
 	private void playGame() {
 		int counter = NTURNS;
 		while (counter > 0) {
+		printTurns(counter);	
 		createBall();
 		waitForClick();
 		launchBall();
 		}
 		counter --;
+	}
+	
+	private void printTurns(int counter) {
+		GLabel turns = new GLabel ("Turns: " + counter);
+		add(turns);
 	}
 
 	private void createBall() {
