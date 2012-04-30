@@ -132,6 +132,7 @@ public class Breakout extends GraphicsProgram {
 	private void printTurns(int counter) {
 		GLabel turns = new GLabel ("Turns: " + counter);
 		add(turns);
+		turns.setLocation(20, 20);
 	}
 
 	private void createBall() {
