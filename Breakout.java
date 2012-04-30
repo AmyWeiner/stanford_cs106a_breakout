@@ -123,7 +123,7 @@ public class Breakout extends GraphicsProgram {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
 		double r = BALL_RADIUS;
-		GOval ball = new GOval(x - r, y - r, 2 * r, 2 * r);
+		ball = new GOval(x - r, y - r, 2 * r, 2 * r);
 		add(ball);
 		ball.setFilled(true);
 	}
