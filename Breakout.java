@@ -140,37 +140,22 @@ public class Breakout extends GraphicsProgram {
 		while (true) {
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
-			if (ball.getY() + BALL_RADIUS > HEIGHT) {
-				bounceUp();
+			if (ball.getY() + (2 *BALL_RADIUS) > HEIGHT) {
+				vy = -vy;
+				pause(PAUSE_TIME);
 			} else if (ball.getX() + BALL_RADIUS > WIDTH) {
-				bounceLeft();
+				vx=-vx;
+				pause(PAUSE_TIME);
 			} else if (ball.getX() < 0) {
-				bounceRight();
+				vx = -vx;
+				pause(PAUSE_TIME);
 			} else if (ball.getY() < 0){
-				bounceDown();
+				vy = -vy;
+				pause(PAUSE_TIME);
 			}
 		}
 	}
 	
-	private void bounceUp() {
-		vy = -vy;
-		pause(PAUSE_TIME);
-	}
-	
-	private void bounceLeft() {
-		vx=-vx;
-		pause(PAUSE_TIME);
-	}
-	
-	private void bounceRight() {
-		vx = -vx;
-		pause(PAUSE_TIME);
-	}
-	
-	private void bounceDown() {
-		vy = -vy;
-		pause(PAUSE_TIME);
-	}
 
 	/* Create an instance variable for the paddle */	
 	private GRect paddle;
