@@ -148,6 +148,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void bounceUp() {
 		ball.move(vx, -vy);
+		pause(PAUSE_TIME);
 	}
 
 	/* Create an instance variable for the paddle */	
