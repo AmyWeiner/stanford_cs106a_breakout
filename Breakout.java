@@ -141,13 +141,6 @@ public class Breakout extends GraphicsProgram {
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
 			GObject collider = getCollidingObject();
-			/*
-			if (collider == paddle) {
-				vy = -vy;
-			} else {
-				remove(collider);
-			}
-			 */
 			if (ball.getY() + (2 *BALL_RADIUS) > HEIGHT) {
 				vy = -vy;
 				pause(PAUSE_TIME);
@@ -162,6 +155,8 @@ public class Breakout extends GraphicsProgram {
 				pause(PAUSE_TIME);
 			} else if (collider == paddle) {
 				vy = -vy;
+			} else {
+				remove(collider);
 			}
 		}
 	}
