@@ -153,22 +153,22 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void bounceUp() {
-		ball.move(vx, -vy);
+		vy = -vy;
 		pause(PAUSE_TIME);
 	}
 	
 	private void bounceLeft() {
-		ball.move(-vx, vy);
+		vx=-vx;
 		pause(PAUSE_TIME);
 	}
 	
 	private void bounceRight() {
-		ball.move(vx, vy);
+		vx = -vx;
 		pause(PAUSE_TIME);
 	}
 	
 	private void bounceDown() {
-		ball.move(vx, vy);
+		vy = -vy;
 		pause(PAUSE_TIME);
 	}
 
