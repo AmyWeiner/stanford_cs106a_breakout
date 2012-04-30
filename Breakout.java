@@ -140,6 +140,10 @@ public class Breakout extends GraphicsProgram {
 		while (true) {
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
+			getCollidingObject(ball);
+			if (collider == paddle) {
+				vy = -vy;
+			}
 			if (ball.getY() + (2 *BALL_RADIUS) > HEIGHT) {
 				vy = -vy;
 				pause(PAUSE_TIME);
@@ -155,7 +159,35 @@ public class Breakout extends GraphicsProgram {
 			}
 		}
 	}
-	
+
+	private GObject getCollidingObject(GObject ball) {
+		GObject collider = getElementAt(ball.getX(), ball.getY());
+		if (collider == null){
+			checkSecondCorner(ball);
+			if (collider == null) {
+				checkThirdCorner(ball);
+				if (collider == null) {
+					checkFourthCorner(ball);
+				}
+			}
+		}
+		return collider;
+	}
+
+	private GObject checkSecondCorner(GObject obj) {
+		GObject collider = getElementAt(obj.getX() + (2 * BALL_RADIUS), ball.getY());
+		return collider; 
+	}
+
+	private GObject checkThirdCorner(GObject obj) {
+		GObject collider = getElementAt(ball.getX(), ball.getY() + (2 * BALL_RADIUS));
+		return collider; 
+	}
+
+	private GObject checkFourthCorner(GObject obj) {
+		GObject collider = getElementAt(ball.getX() + (2 * BALL_RADIUS), ball.getY() + (2 * BALL_RADIUS));
+		return collider; 
+	}
 
 	/* Create an instance variable for the paddle */	
 	private GRect paddle;
@@ -168,6 +200,8 @@ public class Breakout extends GraphicsProgram {
 
 	/* Create an instance variable for the random number generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
+	
+	private GObject collider;
 
 
 }
