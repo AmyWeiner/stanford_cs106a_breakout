@@ -140,7 +140,7 @@ public class Breakout extends GraphicsProgram {
 		while (true) {
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
-			getCollidingObject(ball);
+			GObject collider = getCollidingObject(ball);
 			if (collider == paddle) {
 				vy = -vy;
 			}
@@ -201,7 +201,4 @@ public class Breakout extends GraphicsProgram {
 	/* Create an instance variable for the random number generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
-	private GObject collider;
-
-
 }
