@@ -122,23 +122,22 @@ public class Breakout extends GraphicsProgram {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
 		double r = BALL_RADIUS;
-		add(createFilledCircle(x, y, r, Color.BLACK));
+		GOval ball = new GOval(x - r, y - r, 2 * r, 2 * r);
+		add(ball);
+		ball.setFilled(true);
 	}
 	                       
-	private GOval createFilledCircle(double x, double y, double r, Color color) {
-		GOval circle = new GOval(x - r, y - r, 2 * r, 2 * r);
-		circle.setFilled(true);
-		circle.setColor(color);
-		return circle;
-	}
-	
 	private void launchBall() {
 		vx = rgen.nextDouble(MIN_X_VELOCITY, MAX_X_VELOCITY);
         if (rgen.nextBoolean()) vx = -vx;
+        vy = 3.0;
+        
 	}
 	
 /* Create an instance variable for the paddle */	
 	private GRect paddle;
+	
+	private GOval ball;
 	
 /* Create an instance variable for the velocity in the x and y directions */
 	private double vx, vy;
