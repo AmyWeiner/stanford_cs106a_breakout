@@ -142,12 +142,19 @@ public class Breakout extends GraphicsProgram {
 			pause(PAUSE_TIME);
 			if (ball.getY() > HEIGHT) {
 				bounceUp();
+			} else if (ball.getX() > WIDTH) {
+				bounceLeft();
 			}
 		}
 	}
 	
 	private void bounceUp() {
 		ball.move(vx, -vy);
+		pause(PAUSE_TIME);
+	}
+	
+	private void bounceLeft() {
+		ball.move(-vx, vy);
 		pause(PAUSE_TIME);
 	}
 
