@@ -59,6 +59,7 @@ public class Breakout extends GraphicsProgram {
 /* Runs the Breakout program. */
 	public void run() {
 		setupGame();
+		playGame();
 		
 	}
 
@@ -105,5 +106,27 @@ public class Breakout extends GraphicsProgram {
 		paddle.setLocation(paddleX, paddleY);
 	}
 	
+	private void playGame() {
+		createBall();
+	}
+	
+	private void createBall() {
+		double x = WIDTH / 2;
+		double y = HEIGHT / 2;
+		double r = BALL_RADIUS;
+		add(createFilledCircle(x, y, r, Color.BLACK));
+	}
+	                       
+	private GOval createFilledCircle(double x, double y, double r, Color color) {
+		GOval circle = new GOval(x - r, y - r, 2 * r, 2 * r);
+		circle.setFilled(true);
+		circle.setColor(color);
+		return circle;
+	}
+	
 	private GRect paddle;
+	
+	private double vx, vy;
+	
+	private RandomGenerator rgen = RandomGenerator.getInstance();
 }
