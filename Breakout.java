@@ -56,6 +56,12 @@ public class Breakout extends GraphicsProgram {
 /* Number of turns */
 	private static final int NTURNS = 3;
 	
+/* Minimum x velocity of the ball */
+	private static final double MIN_X_VELOCITY = 1.0;
+	
+/* Maximum x velocity of the ball */
+	private static final double MAX_X_VELOCITY = 3.0;
+	
 /* Runs the Breakout program. */
 	public void run() {
 		setupGame();
@@ -108,6 +114,8 @@ public class Breakout extends GraphicsProgram {
 	
 	private void playGame() {
 		createBall();
+		waitForClick();
+		launchBall();
 	}
 	
 	private void createBall() {
@@ -124,9 +132,17 @@ public class Breakout extends GraphicsProgram {
 		return circle;
 	}
 	
+	private void launchBall() {
+		vx = rgen.nextDouble(MIN_X_VELOCITY, MAX_X_VELOCITY);
+        if (rgen.nextBoolean()) vx = -vx;
+	}
+	
+/* Create an instance variable for the paddle */	
 	private GRect paddle;
 	
+/* Create an instance variable for the velocity in the x and y directions */
 	private double vx, vy;
 	
+/* Create an instance variable for the random number generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 }
