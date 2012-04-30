@@ -111,6 +111,9 @@ public class Breakout extends GraphicsProgram {
 		double paddleX = e.getX();
 		double paddleY = HEIGHT - PADDLE_Y_OFFSET;
 		paddle.setLocation(paddleX, paddleY);
+		if (paddleX > WIDTH) {
+			paddle.setLocation(WIDTH, paddleY);
+		}
 	}
 	
 	private void playGame() {
