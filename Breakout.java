@@ -132,7 +132,7 @@ public class Breakout extends GraphicsProgram {
         if (rgen.nextBoolean()) vx = -vx;
         vy = 3.0;
         while (true) {
-        	ball.move(vx, vy);
+        	//ball.move(vx, vy);
         	
         }
 	}
