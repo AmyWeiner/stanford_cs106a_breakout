@@ -228,6 +228,7 @@ public class Breakout extends GraphicsProgram {
 		loseTurnClip.play();
 		turnCounter --;
 		turns.setLabel("Turns: " + turnCounter);
+		pause(PAUSE_TIME);
 		remove(ball);
 	}
 	
