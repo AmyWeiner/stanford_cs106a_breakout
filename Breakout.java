@@ -265,7 +265,7 @@ public class Breakout extends GraphicsProgram {
 		remove(youLose);
 		turnCounter = NTURNS;
 		scoreCounter = 0;
-		playGame();
+		//playGame();
 	}
 
 	/* Create an instance variable for the paddle */	
