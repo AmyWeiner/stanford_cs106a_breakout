@@ -168,7 +168,7 @@ public class Breakout extends GraphicsProgram {
 				pause(PAUSE_TIME);
 			} else if (collider == paddle) {
 				vy = -vy;
-			} else if (collider != null) {
+			} else if (collider != null && collider != turns) {
 				remove(collider);
 				vy = -vy;
 				brickCounter --;
