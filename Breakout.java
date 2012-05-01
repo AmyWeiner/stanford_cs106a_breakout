@@ -128,7 +128,6 @@ public class Breakout extends GraphicsProgram {
 	private void playGame() {
 		turnCounter = NTURNS;
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
-		//scoreCounter = 0;
 		while (turnCounter > 0) {
 			createBall();
 			waitForClick();
@@ -264,7 +263,8 @@ public class Breakout extends GraphicsProgram {
 	
 	private void resetGame() {
 		remove(youLose);
-		
+		turnCounter = NTURNS;
+		scoreCounter = 0;
 		playGame();
 	}
 
