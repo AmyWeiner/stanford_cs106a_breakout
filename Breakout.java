@@ -81,6 +81,7 @@ public class Breakout extends GraphicsProgram {
 		setupBricks();
 		createPaddle();
 		displayScore(0);
+		displayTurns(NTURNS);
 	}
 
 	private void setupBricks() {
@@ -129,7 +130,7 @@ public class Breakout extends GraphicsProgram {
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
 		scoreCounter = 0;
 		while (turnCounter > 0) {
-			displayTurns(turnCounter);
+			//displayTurns(turnCounter);
 			createBall();
 			waitForClick();
 			launchBall();
@@ -229,8 +230,8 @@ public class Breakout extends GraphicsProgram {
 	/* Updates the number of turns remaining */
 	private void updateTurns() {
 		turnCounter --;
-		turns.setLabel("Turns: " + turnCounter);
 		remove(ball);
+		remove(turns);
 	}
 	
 	private void updateScore() {
