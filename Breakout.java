@@ -149,7 +149,7 @@ public class Breakout extends GraphicsProgram {
 		add(score);
 		double lx = x - score.getWidth();
 		double ly = score.getAscent();
-		turns.setLocation(lx, y + ly);
+		score.setLocation(lx, y + ly);
 	}
 	
 	private void createBall() {
