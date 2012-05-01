@@ -171,14 +171,18 @@ public class Breakout extends GraphicsProgram {
 			} else if (collider != null && collider != turns) {
 				remove(collider);
 				vy = -vy;
-				updateTurns();
+				brickCounter --;
 				if (brickCounter == 0) {
 					break;
 				}
 			}
 		}
+		updateTurns();
 		if (brickCounter == 0){
 			displayYouWin();
+			waitForClick();
+			remove(youWin);
+			playGame();
 		}
 		if (turnCounter == 0) {
 			displayYouLose();
@@ -220,7 +224,7 @@ public class Breakout extends GraphicsProgram {
 	private void displayYouWin() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
-		GLabel youWin = new GLabel("GAME OVER, YOU WIN");
+		youWin = new GLabel("GAME OVER, YOU WIN");
 		add(youWin);
 		double lx = x - youWin.getWidth();
 		youWin.setColor(Color.RED);
@@ -249,5 +253,7 @@ public class Breakout extends GraphicsProgram {
 	private int brickCounter;
 	
 	private GLabel youLose;
+	
+	private GLabel youWin;
 
 }
