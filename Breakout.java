@@ -126,7 +126,7 @@ public class Breakout extends GraphicsProgram {
 	}
 
 	private void playGame() {
-		turnCounter = NTURNS;
+		//turnCounter = NTURNS;
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
 		while (turnCounter > 0) {
 			createBall();
@@ -137,6 +137,7 @@ public class Breakout extends GraphicsProgram {
 
 	/* Displays the number of turns remaining */
 	private void displayTurns(int counter) {
+		turnCounter = NTURNS;
 		double x = 0;
 		double y = 0;
 		turns = new GLabel ("Turns: " + counter);
