@@ -177,7 +177,9 @@ public class Breakout extends GraphicsProgram {
 				}
 			}
 		}
-		displayYouWin();
+		if (brickCounter == 0){
+			displayYouWin();
+		}
 		turnCounter --;
 		remove(ball);
 		remove(turns);
@@ -208,7 +210,7 @@ public class Breakout extends GraphicsProgram {
 		youLose.setFont("Helvetics-24");
 		youLose.setLocation(lx, y);
 	}
-	
+
 	private void displayYouWin() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
@@ -237,7 +239,7 @@ public class Breakout extends GraphicsProgram {
 
 	/* Create an instance variable for the label that displays the number of turns remaining */
 	private GLabel turns;
-	
+
 	private int brickCounter;
 
 }
