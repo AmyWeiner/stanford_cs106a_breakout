@@ -197,7 +197,8 @@ public class Breakout extends GraphicsProgram {
 		double y = HEIGHT / 2;
 		GLabel youLose = new GLabel("GAME OVER" + '\n' + "YOU LOSE");
 		add(youLose);
-		youLose.setLocation(x, y);
+		double lx = x - youLose.getWidth() / 2;
+		youLose.setLocation(lx, y);
 	}
 
 	/* Create an instance variable for the paddle */	
