@@ -125,7 +125,7 @@ public class Breakout extends GraphicsProgram {
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
 		scoreCounter = 0;
 		while (turnCounter > 0) {
-			displayTurns(turnCounter);
+			//displayTurns(turnCounter);
 			displayScore();
 			createBall();
 			waitForClick();
