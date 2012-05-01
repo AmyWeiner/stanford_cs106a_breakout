@@ -157,7 +157,7 @@ public class Breakout extends GraphicsProgram {
 			if (ball.getY() + (2 *BALL_RADIUS) > HEIGHT) {
 				//vy = -vy;
 				//pause(PAUSE_TIME);
-				counter --;
+				counter = counter --;
 			} else if (ball.getX() + (2 *BALL_RADIUS) > WIDTH) {
 				vx=-vx;
 				pause(PAUSE_TIME);
