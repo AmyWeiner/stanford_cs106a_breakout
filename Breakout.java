@@ -64,7 +64,10 @@ public class Breakout extends GraphicsProgram {
 
 	private static final double PAUSE_TIME = 20;
 	
+	/* Number of points per brick */
 	private static final int POINTS_PER_BRICK = 10;
+	
+	private static final double OFFSET_X = 15;
 
 	/* Runs the Breakout program. */
 	public void run() {
@@ -150,7 +153,7 @@ public class Breakout extends GraphicsProgram {
 		double y = 0;
 		score = new GLabel ("Score: " + scoreCounter);
 		add(score);
-		double lx = x - score.getWidth();
+		double lx = x - OFFSET_X;
 		double ly = score.getAscent();
 		score.setLocation(lx, y + ly);
 	}
