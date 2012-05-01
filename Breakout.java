@@ -185,6 +185,8 @@ public class Breakout extends GraphicsProgram {
 		remove(turns);
 		if (turnCounter == 0) {
 			displayYouLose();
+			waitForClick();
+			playGame();
 		}
 	}
 
