@@ -177,19 +177,20 @@ public class Breakout extends GraphicsProgram {
 				}
 			}
 		}
-		updateTurns();
 		if (brickCounter == 0){
 			displayYouWin();
 			waitForClick();
 			remove(youWin);
 			playGame();
-		}
-		if (turnCounter == 0) {
-			displayYouLose();
-			waitForClick();
-			remove(youLose);
-			playGame();
-		}
+		}else {
+			updateTurns();
+			if (turnCounter == 0) {
+				displayYouLose();
+				waitForClick();
+				remove(youLose);
+				playGame();
+			}
+		} 
 	}
 
 	private GObject getCollidingObject() {
