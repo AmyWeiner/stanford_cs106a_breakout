@@ -103,6 +103,7 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 
+	/* Creates the game paddle */
 	private void createPaddle() {
 		int x = (WIDTH - PADDLE_WIDTH)/ 2;
 		int y = HEIGHT - PADDLE_Y_OFFSET;
@@ -133,6 +134,7 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 
+	/* Displays the number of turns remaining */
 	private void displayTurns(int counter) {
 		double x = 0;
 		double y = 0;
@@ -152,6 +154,7 @@ public class Breakout extends GraphicsProgram {
 		score.setLocation(lx, y + ly);
 	}
 	
+	/* Creates the game ball */
 	private void createBall() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
@@ -219,6 +222,7 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 
+	/* Updates the number of turns remaining */
 	private void updateTurns() {
 		turnCounter --;
 		remove(ball);
@@ -227,10 +231,10 @@ public class Breakout extends GraphicsProgram {
 	
 	private void updateScore() {
 		remove(score);
-		scoreCounter += 10;
-		add(score);
+		scoreCounter += POINTS_PER_BRICK;
 	}
 
+	/* Displays a */
 	private void displayYouLose() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
