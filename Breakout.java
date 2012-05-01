@@ -126,7 +126,6 @@ public class Breakout extends GraphicsProgram {
 			waitForClick();
 			launchBall();
 		}
-		counter --;
 	}
 
 	private void displayTurns(int counter) {
@@ -156,9 +155,7 @@ public class Breakout extends GraphicsProgram {
 			pause(PAUSE_TIME);
 			GObject collider = getCollidingObject();
 			if (ball.getY() + (2 *BALL_RADIUS) > HEIGHT) {
-				//vy = -vy;
-				//pause(PAUSE_TIME);
-				counter --;
+				break;
 			} else if (ball.getX() + (2 *BALL_RADIUS) > WIDTH) {
 				vx=-vx;
 				pause(PAUSE_TIME);
@@ -175,6 +172,7 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 			}
 		}
+		counter --;
 	}
 
 	private GObject getCollidingObject() {
