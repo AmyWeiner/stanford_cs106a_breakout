@@ -175,6 +175,9 @@ public class Breakout extends GraphicsProgram {
 		counter --;
 		remove(ball);
 		remove(turns);
+		if (counter == 0) {
+			displayYouLose();
+		}
 	}
 
 	private GObject getCollidingObject() {
@@ -187,6 +190,14 @@ public class Breakout extends GraphicsProgram {
 		}else {
 			return getElementAt(ball.getX() + (2 * BALL_RADIUS), ball.getY() + (2 * BALL_RADIUS));
 		}
+	}
+	
+	private void displayYouLose() {
+		double x = WIDTH / 2;
+		double y = HEIGHT / 2;
+		GLabel youLose = new GLabel("GAME OVER" + '\n' + "YOU LOSE");
+		add(youLose);
+		youLose.setLocation(x, y);
 	}
 
 	/* Create an instance variable for the paddle */	
