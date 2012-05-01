@@ -63,6 +63,8 @@ public class Breakout extends GraphicsProgram {
 	private static final double MAX_X_VELOCITY = 3.0;
 
 	private static final double PAUSE_TIME = 20;
+	
+	private static final int POINTS_PER_BRICK = 10;
 
 	/* Runs the Breakout program. */
 	public void run() {
@@ -121,8 +123,10 @@ public class Breakout extends GraphicsProgram {
 	private void playGame() {
 		turnCounter = NTURNS;
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
+		scoreCounter = 0;
 		while (turnCounter > 0) {
-			displayTurns(turnCounter);	
+			displayTurns(turnCounter);
+			displayScore(scoreCounter);
 			createBall();
 			waitForClick();
 			launchBall();
@@ -138,6 +142,16 @@ public class Breakout extends GraphicsProgram {
 		turns.setLocation(x, y + ly);
 	}
 
+	private void displayScore(int counter) {
+		double x = WIDTH;
+		double y = 0;
+		score = new GLabel ("Score: " + scoreCounter);
+		add(score);
+		double lx = x - score.getWidth();
+		double ly = score.getAscent();
+		turns.setLocation(lx, y + ly);
+	}
+	
 	private void createBall() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
@@ -172,6 +186,7 @@ public class Breakout extends GraphicsProgram {
 				remove(collider);
 				vy = -vy;
 				brickCounter --;
+				updateScore();
 				if (brickCounter == 0) {
 					break;
 				}
@@ -181,7 +196,6 @@ public class Breakout extends GraphicsProgram {
 			displayYouWin();
 			waitForClick();
 			remove(youWin);
-			playGame();
 		}else {
 			updateTurns();
 			if (turnCounter == 0) {
@@ -253,8 +267,12 @@ public class Breakout extends GraphicsProgram {
 
 	private int brickCounter;
 	
+	private int scoreCounter;
+	
 	private GLabel youLose;
 	
 	private GLabel youWin;
+	
+	private GLabel score;
 
 }
