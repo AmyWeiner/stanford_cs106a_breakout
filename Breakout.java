@@ -186,7 +186,8 @@ public class Breakout extends GraphicsProgram {
 				remove(collider);
 				vy = -vy;
 				brickCounter --;
-				updateScore();
+				//updateScore();
+				scoreCounter += 10;
 				if (brickCounter == 0) {
 					break;
 				}
