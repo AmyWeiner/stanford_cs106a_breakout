@@ -119,16 +119,15 @@ public class Breakout extends GraphicsProgram {
 	}
 
 	private void playGame() {
-		int counter = NTURNS;
+		counter = NTURNS;
 		while (counter > 0) {
-		displayTurns(counter);	
-		createBall();
-		waitForClick();
-		launchBall();
+			displayTurns(counter);	
+			createBall();
+			waitForClick();
+			launchBall();
 		}
-		counter --;
 	}
-	
+
 	private void displayTurns(int counter) {
 		double x = 0;
 		double y = 0;
@@ -158,7 +157,7 @@ public class Breakout extends GraphicsProgram {
 			if (ball.getY() + (2 *BALL_RADIUS) > HEIGHT) {
 				//vy = -vy;
 				//pause(PAUSE_TIME);
-				
+				counter --;
 			} else if (ball.getX() + (2 *BALL_RADIUS) > WIDTH) {
 				vx=-vx;
 				pause(PAUSE_TIME);
@@ -200,5 +199,7 @@ public class Breakout extends GraphicsProgram {
 
 	/* Create an instance variable for the random number generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
+
+	private int counter;
 
 }
