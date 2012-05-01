@@ -230,8 +230,9 @@ public class Breakout extends GraphicsProgram {
 	/* Updates the number of turns remaining */
 	private void updateTurns() {
 		turnCounter --;
+		turns.setLabel("Turns: " + turnCounter);
 		remove(ball);
-		remove(turns);
+		//remove(turns);
 	}
 	
 	private void updateScore() {
