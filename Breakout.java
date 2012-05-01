@@ -171,13 +171,12 @@ public class Breakout extends GraphicsProgram {
 			} else if (collider != null && collider != turns) {
 				remove(collider);
 				vy = -vy;
-				brickCounter --;
+				updateTurns();
 				if (brickCounter == 0) {
 					break;
 				}
 			}
 		}
-		updateTurns();
 		if (brickCounter == 0){
 			displayYouWin();
 		}
