@@ -77,6 +77,7 @@ public class Breakout extends GraphicsProgram {
 	private void setupGame() {
 		setupBricks();
 		createPaddle();
+		displayScore(0);
 
 	}
 
@@ -232,8 +233,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void updateScore() {
-		remove(score);
 		scoreCounter += POINTS_PER_BRICK;
+		score.setLabel("Score: " + scoreCounter);
 	}
 
 	/* Displays a */
