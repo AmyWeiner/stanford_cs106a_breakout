@@ -173,6 +173,8 @@ public class Breakout extends GraphicsProgram {
 			}
 		}
 		counter --;
+		remove(ball);
+		
 	}
 
 	private GObject getCollidingObject() {
