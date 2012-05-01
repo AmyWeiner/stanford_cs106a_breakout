@@ -119,9 +119,10 @@ public class Breakout extends GraphicsProgram {
 	}
 
 	private void playGame() {
-		counter = NTURNS;
-		while (counter > 0) {
-			displayTurns(counter);	
+		turnCounter = NTURNS;
+		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
+		while (turnCounter > 0) {
+			displayTurns(turnCounter);	
 			createBall();
 			waitForClick();
 			launchBall();
@@ -170,12 +171,16 @@ public class Breakout extends GraphicsProgram {
 			} else if (collider != null) {
 				remove(collider);
 				vy = -vy;
+				brickCounter --;
+				if (brickCounter == 0) {
+					displayYouWin();
+				}
 			}
 		}
-		counter --;
+		turnCounter --;
 		remove(ball);
 		remove(turns);
-		if (counter == 0) {
+		if (turnCounter == 0) {
 			displayYouLose();
 		}
 	}
@@ -191,7 +196,7 @@ public class Breakout extends GraphicsProgram {
 			return getElementAt(ball.getX() + (2 * BALL_RADIUS), ball.getY() + (2 * BALL_RADIUS));
 		}
 	}
-	
+
 	private void displayYouLose() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
@@ -201,6 +206,17 @@ public class Breakout extends GraphicsProgram {
 		youLose.setColor(Color.RED);
 		youLose.setFont("Helvetics-24");
 		youLose.setLocation(lx, y);
+	}
+	
+	private void displayYouWin() {
+		double x = WIDTH / 2;
+		double y = HEIGHT / 2;
+		GLabel youWin = new GLabel("GAME OVER, YOU WIN");
+		add(youWin);
+		double lx = x - youWin.getWidth();
+		youWin.setColor(Color.RED);
+		youWin.setFont("Helvetics-24");
+		youWin.setLocation(lx, y);
 	}
 
 	/* Create an instance variable for the paddle */	
@@ -215,8 +231,12 @@ public class Breakout extends GraphicsProgram {
 	/* Create an instance variable for the random number generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 
-	private int counter;
-	
+	/* Create an instance variable for the counter of current number of turns */
+	private int turnCounter;
+
+	/* Create an instance variable for the label that displays the number of turns remaining */
 	private GLabel turns;
+	
+	private int brickCounter;
 
 }
