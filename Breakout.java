@@ -184,6 +184,7 @@ public class Breakout extends GraphicsProgram {
 		if (turnCounter == 0) {
 			displayYouLose();
 			waitForClick();
+			remove(youLose);
 			playGame();
 		}
 	}
@@ -209,7 +210,7 @@ public class Breakout extends GraphicsProgram {
 	private void displayYouLose() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
-		GLabel youLose = new GLabel("GAME OVER, YOU LOSE");
+		youLose = new GLabel("GAME OVER, YOU LOSE");
 		add(youLose);
 		double lx = x - youLose.getWidth();
 		youLose.setColor(Color.RED);
@@ -247,5 +248,7 @@ public class Breakout extends GraphicsProgram {
 	private GLabel turns;
 
 	private int brickCounter;
+	
+	private GLabel youLose;
 
 }
