@@ -128,7 +128,7 @@ public class Breakout extends GraphicsProgram {
 	private void playGame() {
 		turnCounter = NTURNS;
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
-		scoreCounter = 0;
+		//scoreCounter = 0;
 		while (turnCounter > 0) {
 			createBall();
 			waitForClick();
@@ -208,8 +208,7 @@ public class Breakout extends GraphicsProgram {
 			if (turnCounter == 0) {
 				displayYouLose();
 				waitForClick();
-				remove(youLose);
-				playGame();
+				resetGame();
 			}
 		} 
 	}
@@ -261,6 +260,12 @@ public class Breakout extends GraphicsProgram {
 		youWin.setColor(Color.RED);
 		youWin.setFont("Helvetics-24");
 		youWin.setLocation(lx, y);
+	}
+	
+	private void resetGame() {
+		remove(youLose);
+		
+		playGame();
 	}
 
 	/* Create an instance variable for the paddle */	
