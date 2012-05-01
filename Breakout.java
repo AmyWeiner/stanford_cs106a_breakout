@@ -127,7 +127,7 @@ public class Breakout extends GraphicsProgram {
 		scoreCounter = 0;
 		while (turnCounter > 0) {
 			displayTurns(turnCounter);
-			displayScore(scoreCounter);
+			
 			createBall();
 			waitForClick();
 			launchBall();
@@ -187,9 +187,11 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 			} else if (collider != null && collider != turns) {
 				remove(collider);
+				
 				vy = -vy;
 				brickCounter --;
 				updateScore();
+				displayScore(scoreCounter);
 				if (brickCounter == 0) {
 					break;
 				}
