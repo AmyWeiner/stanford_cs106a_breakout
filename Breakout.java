@@ -186,7 +186,7 @@ public class Breakout extends GraphicsProgram {
 				remove(collider);
 				vy = -vy;
 				brickCounter --;
-				//updateScore();
+				updateScore();
 				if (brickCounter == 0) {
 					break;
 				}
@@ -223,6 +223,10 @@ public class Breakout extends GraphicsProgram {
 		turnCounter --;
 		remove(ball);
 		remove(turns);
+	}
+	
+	private void updateScore() {
+		scoreCounter += 10;
 	}
 
 	private void displayYouLose() {
