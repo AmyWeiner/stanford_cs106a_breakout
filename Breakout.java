@@ -197,7 +197,7 @@ public class Breakout extends GraphicsProgram {
 		double y = HEIGHT / 2;
 		GLabel youLose = new GLabel("GAME OVER, YOU LOSE");
 		add(youLose);
-		double lx = x - youLose.getWidth() / 2;
+		double lx = x - youLose.getWidth();
 		youLose.setColor(Color.RED);
 		youLose.setFont("Helvetics-24");
 		youLose.setLocation(lx, y);
