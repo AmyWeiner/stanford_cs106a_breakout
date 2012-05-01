@@ -177,12 +177,10 @@ public class Breakout extends GraphicsProgram {
 				}
 			}
 		}
+		updateTurns();
 		if (brickCounter == 0){
 			displayYouWin();
 		}
-		turnCounter --;
-		remove(ball);
-		remove(turns);
 		if (turnCounter == 0) {
 			displayYouLose();
 			waitForClick();
@@ -200,6 +198,12 @@ public class Breakout extends GraphicsProgram {
 		}else {
 			return getElementAt(ball.getX() + (2 * BALL_RADIUS), ball.getY() + (2 * BALL_RADIUS));
 		}
+	}
+
+	private void updateTurns() {
+		turnCounter --;
+		remove(ball);
+		remove(turns);
 	}
 
 	private void displayYouLose() {
