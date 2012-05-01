@@ -81,7 +81,6 @@ public class Breakout extends GraphicsProgram {
 		setupBricks();
 		createPaddle();
 		displayScore(0);
-
 	}
 
 	private void setupBricks() {
@@ -131,7 +130,6 @@ public class Breakout extends GraphicsProgram {
 		scoreCounter = 0;
 		while (turnCounter > 0) {
 			displayTurns(turnCounter);
-			
 			createBall();
 			waitForClick();
 			launchBall();
@@ -188,10 +186,11 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 				pause(PAUSE_TIME);
 			} else if (collider == paddle) {
+				bounceClip.play();
 				vy = -vy;
 			} else if (collider != null && collider != turns) {
 				remove(collider);
-				
+				bounceClip.play();
 				vy = -vy;
 				brickCounter --;
 				updateScore();
@@ -289,5 +288,7 @@ public class Breakout extends GraphicsProgram {
 	private GLabel youWin;
 	
 	private GLabel score;
+	
+	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 
 }
