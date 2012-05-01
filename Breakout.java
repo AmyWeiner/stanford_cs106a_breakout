@@ -67,7 +67,7 @@ public class Breakout extends GraphicsProgram {
 	/* Number of points per brick */
 	private static final int POINTS_PER_BRICK = 10;
 	
-	private static final double OFFSET_X = 60;
+	private static final double OFFSET_X = 70;
 
 	/* Runs the Breakout program. */
 	public void run() {
