@@ -131,7 +131,7 @@ public class Breakout extends GraphicsProgram {
 	private void displayTurns(int counter) {
 		double x = 0;
 		double y = 0;
-		GLabel turns = new GLabel ("Turns: " + counter);
+		turns = new GLabel ("Turns: " + counter);
 		add(turns);
 		double ly = turns.getAscent();
 		turns.setLocation(x, y + ly);
@@ -174,7 +174,7 @@ public class Breakout extends GraphicsProgram {
 		}
 		counter --;
 		remove(ball);
-		
+		remove(turns);
 	}
 
 	private GObject getCollidingObject() {
@@ -202,5 +202,7 @@ public class Breakout extends GraphicsProgram {
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 
 	private int counter;
+	
+	private GLabel turns;
 
 }
