@@ -130,7 +130,6 @@ public class Breakout extends GraphicsProgram {
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
 		scoreCounter = 0;
 		while (turnCounter > 0) {
-			//displayTurns(turnCounter);
 			createBall();
 			waitForClick();
 			launchBall();
@@ -232,15 +231,15 @@ public class Breakout extends GraphicsProgram {
 		turnCounter --;
 		turns.setLabel("Turns: " + turnCounter);
 		remove(ball);
-		//remove(turns);
 	}
 	
+	/* Updates the player's score */
 	private void updateScore() {
 		scoreCounter += POINTS_PER_BRICK;
 		score.setLabel("Score: " + scoreCounter);
 	}
 
-	/* Displays a */
+	/* Displays a massage notifying user that game is over, and that player has lost */
 	private void displayYouLose() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
@@ -252,6 +251,7 @@ public class Breakout extends GraphicsProgram {
 		youLose.setLocation(lx, y);
 	}
 
+	/* Displays a massage notifying user that game is over, and that player has won */
 	private void displayYouWin() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
