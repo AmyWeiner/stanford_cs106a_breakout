@@ -150,7 +150,7 @@ public class Breakout extends GraphicsProgram {
 	private void launchBall() {
 		vx = rgen.nextDouble(MIN_X_VELOCITY, MAX_X_VELOCITY);
 		if (rgen.nextBoolean()) vx = -vx;
-		vy = 3.0;
+		vy = 5.0;
 		while (true) {
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
@@ -173,10 +173,11 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 				brickCounter --;
 				if (brickCounter == 0) {
-					displayYouWin();
+					break;
 				}
 			}
 		}
+		displayYouWin();
 		turnCounter --;
 		remove(ball);
 		remove(turns);
