@@ -195,10 +195,12 @@ public class Breakout extends GraphicsProgram {
 	private void displayYouLose() {
 		double x = WIDTH / 2;
 		double y = HEIGHT / 2;
-		GLabel youLose = new GLabel("GAME OVER" + '\r' + "YOU LOSE");
+		GLabel youLose = new GLabel("GAME OVER, YOU LOSE");
 		add(youLose);
 		double lx = x - youLose.getWidth() / 2;
 		youLose.setLocation(lx, y);
+		youLose.setColor(Color.RED);
+		youLose.setFont("Helvetics-24");
 	}
 
 	/* Create an instance variable for the paddle */	
