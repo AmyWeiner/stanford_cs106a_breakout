@@ -126,7 +126,6 @@ public class Breakout extends GraphicsProgram {
 	}
 
 	private void playGame() {
-		//turnCounter = NTURNS;
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
 		while (turnCounter > 0) {
 			createBall();
@@ -226,6 +225,7 @@ public class Breakout extends GraphicsProgram {
 
 	/* Updates the number of turns remaining */
 	private void updateTurns() {
+		loseTurnClip.play();
 		turnCounter --;
 		turns.setLabel("Turns: " + turnCounter);
 		remove(ball);
@@ -297,5 +297,8 @@ public class Breakout extends GraphicsProgram {
 	private GLabel score;
 	
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
+	
+	AudioClip loseTurnClip = MediaTools.loadAudioClip("26SINVADE3.wav");
+
 
 }
