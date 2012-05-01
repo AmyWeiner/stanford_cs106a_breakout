@@ -188,7 +188,7 @@ public class Breakout extends GraphicsProgram {
 			} else if (collider == paddle) {
 				bounceClip.play();
 				vy = -vy;
-			} else if (collider != null && collider != turns) {
+			} else if (collider != null && collider != turns && collider != score) {
 				remove(collider);
 				bounceClip.play();
 				vy = -vy;
@@ -229,8 +229,8 @@ public class Breakout extends GraphicsProgram {
 	/* Updates the number of turns remaining */
 	private void updateTurns() {
 		turnCounter --;
+		turns.setLabel("Turns: " + turnCounter);
 		remove(ball);
-		remove(turns);
 	}
 	
 	private void updateScore() {
