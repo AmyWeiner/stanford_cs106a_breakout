@@ -125,8 +125,8 @@ public class Breakout extends GraphicsProgram {
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
 		scoreCounter = 0;
 		while (turnCounter > 0) {
-			//displayTurns(turnCounter);
-			displayScore();
+			displayTurns(turnCounter);
+			displayScore(scoreCounter);
 			createBall();
 			waitForClick();
 			launchBall();
@@ -142,7 +142,7 @@ public class Breakout extends GraphicsProgram {
 		turns.setLocation(x, y + ly);
 	}
 
-	private void displayScore() {
+	private void displayScore(int scoreCounter) {
 		double x = WIDTH;
 		double y = 0;
 		score = new GLabel ("Score: " + scoreCounter);
