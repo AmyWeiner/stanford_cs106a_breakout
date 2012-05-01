@@ -206,7 +206,6 @@ public class Breakout extends GraphicsProgram {
 			updateTurns();
 			if (turnCounter == 0) {
 				displayYouLose();
-				waitForClick();
 				resetGame();
 			}
 		} 
@@ -262,10 +261,10 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void resetGame() {
+		waitForClick();
 		remove(youLose);
 		turnCounter = NTURNS;
 		scoreCounter = 0;
-		//playGame();
 	}
 
 	/* Create an instance variable for the paddle */	
