@@ -264,11 +264,13 @@ public class Breakout extends GraphicsProgram {
 	
 	private void resetGame() {
 		waitForClick();
-		remove(youLose);
-		remove(paddle);
+		removeAll();
+		//remove(youLose);
+		//remove(paddle);
 		setupGame();
-		turnCounter = NTURNS;
-		scoreCounter = 0;
+		playGame();
+		//turnCounter = NTURNS;
+		//scoreCounter = 0;
 	}
 
 	/* Create an instance variable for the paddle */	
