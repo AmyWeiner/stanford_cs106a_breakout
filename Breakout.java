@@ -78,6 +78,7 @@ public class Breakout extends GraphicsProgram {
 	}
 
 	private void setupGame() {
+		playGameClip.play();
 		setupBricks();
 		createPaddle();
 		displayScore(0);
@@ -131,7 +132,6 @@ public class Breakout extends GraphicsProgram {
 			createBall();
 			waitForClick();
 			launchBall();
-			playGameClip.play();
 		}
 	}
 
