@@ -251,9 +251,15 @@ public class Breakout extends GraphicsProgram {
 		} else if (brickCounter == startBricks - (decrement * 4)) {
 			vy = vy + (deltaVelocity * 4);
 		} else if (brickCounter == startBricks - (decrement * 5)) {
-			vy = vy + deltaVelocity;
+			vy = vy + (deltaVelocity * 5);
 		} else if (brickCounter == startBricks - (decrement * 6)) {
-			vy = vy + deltaVelocity;
+			vy = vy + (deltaVelocity * 6);
+		} else if (brickCounter == startBricks - (decrement * 7)) {
+			vy = vy + (deltaVelocity * 7);
+		} else if (brickCounter == startBricks - (decrement * 8)) {
+			vy = vy + (deltaVelocity * 8);
+		} else if (brickCounter == startBricks - (decrement * 9)) {
+			vy = vy + (deltaVelocity * 9);
 		}
 	}
 
