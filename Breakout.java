@@ -78,7 +78,6 @@ public class Breakout extends GraphicsProgram {
 	}
 
 	private void setupGame() {
-		playGameClip.play();
 		setupBricks();
 		createPaddle();
 		displayScore(0);
@@ -187,6 +186,7 @@ public class Breakout extends GraphicsProgram {
 				pause(PAUSE_TIME);
 			} else if (collider == paddle) {
 				bounceClip.play();
+				playGameClip.play();
 				vy = -vy;
 			} else if (collider != null && collider != turns && collider != score) {
 				remove(collider);
