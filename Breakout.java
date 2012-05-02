@@ -309,5 +309,5 @@ public class Breakout extends GraphicsProgram {
 	
 	AudioClip winGameClip = MediaTools.loadAudioClip("win.wav");
 	
-	AudioClip playGameClip = MediaTools.loadAudioClip("Tetris_-_Theme_A.wav");
+	AudioClip playGameClip = MediaTools.loadAudioClip("Tetris.wav");
 }
