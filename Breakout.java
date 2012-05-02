@@ -1,10 +1,10 @@
 /*
  * File: Breakout.java
  * -------------------
- * Name:
- * Section Leader:
+ * Name: Amy R. Weiner
+ * Section Leader: Molly Mackinlay 
  * 
- * This file will eventually implement the game of Breakout.
+ * This file implements the game of Breakout.
  */
 
 import acm.graphics.*;
@@ -179,21 +179,21 @@ public class Breakout extends GraphicsProgram {
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
 			GObject collider = getCollidingObject();
-			if (ball.getY() + (2 *BALL_RADIUS) > HEIGHT) {
+			if (ball.getY() + (2 *BALL_RADIUS) > HEIGHT) {						//checks if ball has the bottom of application screen
 				break;
-			} else if (ball.getX() + (2 *BALL_RADIUS) > WIDTH) {
+			} else if (ball.getX() + (2 *BALL_RADIUS) > WIDTH) {				//checks if ball has hit right wall
 				vx=-vx;
 				pause(PAUSE_TIME);
-			} else if (ball.getX() < 0) {
+			} else if (ball.getX() < 0) {										//checks if ball has hit left wall
 				vx = -vx;
 				pause(PAUSE_TIME);
-			} else if (ball.getY() < 0){
+			} else if (ball.getY() < 0){										//checks if ball has hit the top of the application screen
 				vy = -vy;
 				pause(PAUSE_TIME);
-			} else if (collider == paddle) {
+			} else if (collider == paddle) {									//checks if ball has hit the paddle
 				bounceClip.play();
 				vy = -vy;
-			} else if (collider != null && collider != turns && collider != score) {
+			} else if (collider != null && collider != turns && collider != score) {	//checks if ball has hit a brick
 				remove(collider);
 				bounceClip.play();
 				vy = -vy;
@@ -219,7 +219,7 @@ public class Breakout extends GraphicsProgram {
 		} 
 	}
 
-	/* Determines if the ball has collided with an object */
+	/* Determines if the ball has collided with an object by checking four points around the ball */
 	private GObject getCollidingObject() {
 		if (getElementAt(ball.getX(), ball.getY()) != null) {
 			return getElementAt(ball.getX(), ball.getY());
@@ -346,7 +346,7 @@ public class Breakout extends GraphicsProgram {
 	/* Create an instance variable for the audio clip used when the player wins the game */
 	AudioClip winGameClip = MediaTools.loadAudioClip("win.wav");
 	
-	/* Create an instance variable for the audio clip used when the player wins the game */
+	/* Create an instance variable for the audio clip used when the player loses the game */
 	AudioClip loseGameClip = MediaTools.loadAudioClip("mrdo_end.wav");
 
 }
