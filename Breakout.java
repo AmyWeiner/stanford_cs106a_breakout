@@ -77,14 +77,15 @@ public class Breakout extends GraphicsProgram {
 
 	}
 
+	/* Sets up the game */
 	private void setupGame() {
-		playGameClip.play();
 		setupBricks();
 		createPaddle();
 		displayScore(0);
 		displayTurns(NTURNS);
 	}
 
+	/* Sets up the grid of bricks */
 	private void setupBricks() {
 		for (int i = 0; i < NBRICK_ROWS; i ++) {
 			for (int j = 0; j < NBRICKS_PER_ROW; j ++) {
@@ -117,6 +118,7 @@ public class Breakout extends GraphicsProgram {
 		paddle.setFilled(true);
 	}
 
+	/* Creates a mouseMoved event so that the paddle tracks the mouse */
 	public void mouseMoved(MouseEvent e) {
 		double dx = e.getX();
 		double paddleY = HEIGHT - PADDLE_Y_OFFSET;
@@ -126,6 +128,7 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 
+	/* Starts the play of the game */
 	private void playGame() {
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
 		while (turnCounter > 0) {
@@ -146,6 +149,7 @@ public class Breakout extends GraphicsProgram {
 		turns.setLocation(x, y + ly);
 	}
 
+	/* Displays the current score */
 	private void displayScore(int scoreCounter) {
 		double x = WIDTH;
 		double y = 0;
@@ -166,6 +170,7 @@ public class Breakout extends GraphicsProgram {
 		ball.setFilled(true);
 	}
 
+	/* Launches the ball with a random velocity in the x-direction, and with a constant velocity in the y-direction */
 	private void launchBall() {
 		vx = rgen.nextDouble(MIN_X_VELOCITY, MAX_X_VELOCITY);
 		if (rgen.nextBoolean()) vx = -vx;
@@ -188,7 +193,6 @@ public class Breakout extends GraphicsProgram {
 			} else if (collider == paddle) {
 				bounceClip.play();
 				vy = -vy;
-				ball.setLocation(ball.getX(), (paddle.getY() - PADDLE_HEIGHT));
 			} else if (collider != null && collider != turns && collider != score) {
 				remove(collider);
 				bounceClip.play();
@@ -208,12 +212,14 @@ public class Breakout extends GraphicsProgram {
 		}else {
 			updateTurns();
 			if (turnCounter == 0) {
+				loseGameClip.play();
 				displayYouLose();
 				resetGame();
 			}
 		} 
 	}
 
+	/* Determines if the ball has collided with an object */
 	private GObject getCollidingObject() {
 		if (getElementAt(ball.getX(), ball.getY()) != null) {
 			return getElementAt(ball.getX(), ball.getY());
@@ -240,6 +246,7 @@ public class Breakout extends GraphicsProgram {
 		score.setLabel("Score: " + scoreCounter);
 	}
 
+	/* Updates the velocity of the ball in the y-direction for every ten bricks removed */
 	private void updateVelocity() {
 		int startBricks = NBRICKS_PER_ROW * NBRICK_ROWS;
 		int decrement = 10;
@@ -330,11 +337,16 @@ public class Breakout extends GraphicsProgram {
 	/* Create an instance variable for the label that displays the current score */
 	private GLabel score;
 
+	/* Create an instance variable for the audio clip used when the ball collides with a brick or with the paddle */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 
+	/* Create an instance variable for the audio clip used when the player loses a turn */
 	AudioClip loseTurnClip = MediaTools.loadAudioClip("26SINVADE3.wav");
 
+	/* Create an instance variable for the audio clip used when the player wins the game */
 	AudioClip winGameClip = MediaTools.loadAudioClip("win.wav");
+	
+	/* Create an instance variable for the audio clip used when the player wins the game */
+	AudioClip loseGameClip = MediaTools.loadAudioClip("mrdo_end.wav");
 
-	AudioClip playGameClip = MediaTools.loadAudioClip("Tetris.wav");
 }
