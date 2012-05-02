@@ -187,7 +187,7 @@ public class Breakout extends GraphicsProgram {
 				pause(PAUSE_TIME);
 			} else if (collider == paddle) {
 				bounceClip.play();
-				ball.setLocation(ball.getX(), HEIGHT - PADDLE_Y_OFFSET);
+				ball.setLocation(ball.getX(), paddle.getY());
 				vy = -vy;
 			} else if (collider != null && collider != turns && collider != score) {
 				remove(collider);
