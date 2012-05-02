@@ -131,6 +131,7 @@ public class Breakout extends GraphicsProgram {
 			createBall();
 			waitForClick();
 			launchBall();
+			playGameClip.play();
 		}
 	}
 
@@ -201,8 +202,7 @@ public class Breakout extends GraphicsProgram {
 		if (brickCounter == 0){
 			winGameClip.play();
 			displayYouWin();
-			waitForClick();
-			remove(youWin);
+			resetGame();
 		}else {
 			updateTurns();
 			if (turnCounter == 0) {
@@ -262,15 +262,12 @@ public class Breakout extends GraphicsProgram {
 		youWin.setLocation(lx, y);
 	}
 	
+	/* Resets the game */
 	private void resetGame() {
 		waitForClick();
 		removeAll();
-		//remove(youLose);
-		//remove(paddle);
 		setupGame();
 		playGame();
-		//turnCounter = NTURNS;
-		//scoreCounter = 0;
 	}
 
 	/* Create an instance variable for the paddle */	
@@ -291,14 +288,19 @@ public class Breakout extends GraphicsProgram {
 	/* Create an instance variable for the label that displays the number of turns remaining */
 	private GLabel turns;
 
+	/* Create an instance variable for a counter that counts the number of brinks remaining */
 	private int brickCounter;
 	
+	/* Create an instance variable for a counter that keeps a running tally of the score */
 	private int scoreCounter;
 	
+	/* Create an instance variable for a message indicating that the game is over, and that the player has lost */
 	private GLabel youLose;
 	
+	/* Create an instance variable for a message indicating that the game is over, and that the player has won */
 	private GLabel youWin;
 	
+	/* Create an instance variable for the label that displays the current score */
 	private GLabel score;
 	
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -306,4 +308,6 @@ public class Breakout extends GraphicsProgram {
 	AudioClip loseTurnClip = MediaTools.loadAudioClip("26SINVADE3.wav");
 	
 	AudioClip winGameClip = MediaTools.loadAudioClip("win.wav");
+	
+	AudioClip playGameClip = MediaTools.loadAudioClip("Tetris_-_Theme_A.wav");
 }
