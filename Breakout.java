@@ -128,7 +128,6 @@ public class Breakout extends GraphicsProgram {
 	private void playGame() {
 		brickCounter = NBRICKS_PER_ROW * NBRICK_ROWS;
 		while (turnCounter > 0) {
-			playGameClip.play();
 			createBall();
 			waitForClick();
 			launchBall();
@@ -303,6 +302,4 @@ public class Breakout extends GraphicsProgram {
 	AudioClip loseTurnClip = MediaTools.loadAudioClip("26SINVADE3.wav");
 	
 	AudioClip winGameClip = MediaTools.loadAudioClip("win.wav");
-	
-	AudioClip playGameClip = MediaTools.loadAudioClip("Tetris - Gameboy.mp3");
 }
