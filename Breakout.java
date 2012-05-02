@@ -63,10 +63,10 @@ public class Breakout extends GraphicsProgram {
 	private static final double MAX_X_VELOCITY = 3.0;
 
 	private static final double PAUSE_TIME = 20;
-	
+
 	/* Number of points per brick */
 	private static final int POINTS_PER_BRICK = 10;
-	
+
 	private static final double OFFSET_X = 70;
 
 	/* Runs the Breakout program. */
@@ -154,7 +154,7 @@ public class Breakout extends GraphicsProgram {
 		double ly = score.getAscent();
 		score.setLocation(lx, y + ly);
 	}
-	
+
 	/* Creates the game ball */
 	private void createBall() {
 		double x = WIDTH / 2;
@@ -186,7 +186,6 @@ public class Breakout extends GraphicsProgram {
 				pause(PAUSE_TIME);
 			} else if (collider == paddle) {
 				bounceClip.play();
-				playGameClip.play();
 				vy = -vy;
 			} else if (collider != null && collider != turns && collider != score) {
 				remove(collider);
@@ -194,6 +193,7 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 				brickCounter --;
 				updateScore();
+				updateVelocity();
 				if (brickCounter == 0) {
 					break;
 				}
@@ -231,11 +231,28 @@ public class Breakout extends GraphicsProgram {
 		turns.setLabel("Turns: " + turnCounter);
 		remove(ball);
 	}
-	
+
 	/* Updates the player's score */
 	private void updateScore() {
 		scoreCounter += POINTS_PER_BRICK;
 		score.setLabel("Score: " + scoreCounter);
+	}
+
+	private void updateVelocity() {
+		int startBricks = NBRICKS_PER_ROW * NBRICK_ROWS;
+		int decrement = 10;
+		double deltaVelocity = 1.0;
+		if (brickCounter == startBricks - decrement) {
+			vy = vy + deltaVelocity;
+		} else if (brickCounter == startBricks - (decrement * 2)) {
+			vy = vy + deltaVelocity;
+		} else if (brickCounter == startBricks - (decrement * 3)) {
+			vy = vy + deltaVelocity;
+		} else if (brickCounter == startBricks - (decrement * 4)) {
+			vy = vy + deltaVelocity;
+		}else if (brickCounter == startBricks - (decrement * 5)) {
+			vy = vy + deltaVelocity;
+		}
 	}
 
 	/* Displays a massage notifying user that game is over, and that player has lost */
@@ -261,7 +278,7 @@ public class Breakout extends GraphicsProgram {
 		youWin.setFont("Helvetics-24");
 		youWin.setLocation(lx, y);
 	}
-	
+
 	/* Resets the game */
 	private void resetGame() {
 		waitForClick();
@@ -290,24 +307,24 @@ public class Breakout extends GraphicsProgram {
 
 	/* Create an instance variable for a counter that counts the number of brinks remaining */
 	private int brickCounter;
-	
+
 	/* Create an instance variable for a counter that keeps a running tally of the score */
 	private int scoreCounter;
-	
+
 	/* Create an instance variable for a message indicating that the game is over, and that the player has lost */
 	private GLabel youLose;
-	
+
 	/* Create an instance variable for a message indicating that the game is over, and that the player has won */
 	private GLabel youWin;
-	
+
 	/* Create an instance variable for the label that displays the current score */
 	private GLabel score;
-	
+
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
-	
+
 	AudioClip loseTurnClip = MediaTools.loadAudioClip("26SINVADE3.wav");
-	
+
 	AudioClip winGameClip = MediaTools.loadAudioClip("win.wav");
-	
+
 	AudioClip playGameClip = MediaTools.loadAudioClip("Tetris.wav");
 }
