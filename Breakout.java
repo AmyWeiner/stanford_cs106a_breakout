@@ -265,6 +265,7 @@ public class Breakout extends GraphicsProgram {
 	private void resetGame() {
 		waitForClick();
 		remove(youLose);
+		remove(paddle);
 		setupGame();
 		turnCounter = NTURNS;
 		scoreCounter = 0;
