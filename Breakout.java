@@ -69,6 +69,10 @@ public class Breakout extends GraphicsProgram {
 
 	private static final double OFFSET_X = 70;
 
+	public static void main(String[] args) {
+		new Breakout().start(args);
+	}
+
 	/* Runs the Breakout program. */
 	public void run() {
 		addMouseListeners();
@@ -83,6 +87,7 @@ public class Breakout extends GraphicsProgram {
 		createPaddle();
 		displayScore(0);
 		displayTurns(NTURNS);
+		displayWelcome();
 	}
 
 	/* Sets up the grid of bricks */
@@ -134,6 +139,7 @@ public class Breakout extends GraphicsProgram {
 		while (turnCounter > 0) {
 			createBall();
 			waitForClick();
+			remove(welcome);
 			launchBall();
 		}
 	}
@@ -158,6 +164,17 @@ public class Breakout extends GraphicsProgram {
 		double lx = x - OFFSET_X;
 		double ly = score.getAscent();
 		score.setLocation(lx, y + ly);
+	}
+	
+	/* Displays the welcome message */
+	private void displayWelcome() {
+		double y = (HEIGHT / 2) + (BALL_RADIUS * 3) ;
+		welcome = new GLabel("HELLO, CLICK TO PLAY");
+		add(welcome);
+		double x = WIDTH / 2;
+		welcome.setColor(Color.RED);
+		welcome.setFont("Helvetics-20");
+		welcome.setLocation(x - (welcome.getWidth() / 2), y);
 	}
 
 	/* Creates the game ball */
@@ -190,9 +207,9 @@ public class Breakout extends GraphicsProgram {
 			} else if (ball.getY() < 0){										//checks if ball has hit the top of the application screen
 				vy = -vy;
 				pause(PAUSE_TIME);
-			} else if (collider == paddle) {									//checks if ball has hit the paddle
+			} else if (collider == paddle) {                                   //checks if ball has hit the paddle 
 				bounceClip.play();
-				vy = -vy;
+				vy = -vy;	
 			} else if (collider != null && collider != turns && collider != score) {	//checks if ball has hit a brick
 				remove(collider);
 				bounceClip.play();
@@ -250,7 +267,7 @@ public class Breakout extends GraphicsProgram {
 	private void updateVelocity() {
 		int startBricks = NBRICKS_PER_ROW * NBRICK_ROWS;
 		int decrement = 10;
-		double deltaVelocity = 1.0;
+		double deltaVelocity = 0.5;
 		if (brickCounter == startBricks - decrement) {
 			vy = vy + deltaVelocity;
 		} else if (brickCounter == startBricks - (decrement * 2)) {
@@ -336,6 +353,9 @@ public class Breakout extends GraphicsProgram {
 
 	/* Create an instance variable for the label that displays the current score */
 	private GLabel score;
+	
+	/* Create an instance variable for the label that displays the welcome message */
+	private GLabel welcome;
 
 	/* Create an instance variable for the audio clip used when the ball collides with a brick or with the paddle */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -345,7 +365,7 @@ public class Breakout extends GraphicsProgram {
 
 	/* Create an instance variable for the audio clip used when the player wins the game */
 	AudioClip winGameClip = MediaTools.loadAudioClip("win.wav");
-	
+
 	/* Create an instance variable for the audio clip used when the player loses the game */
 	AudioClip loseGameClip = MediaTools.loadAudioClip("mrdo_end.wav");
 
